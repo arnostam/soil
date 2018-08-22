@@ -1,56 +1,26 @@
 <html>
-
 <head>
-  <!--<meta http-equiv="refresh" content="5" />-->
-  <title>Fuel KM Registration</title>
-  <link rel="stylesheet" type="text/css" href="./mobileFirst.css">
+
+<?php
+
+$fileWrite = '';    
+$myFile = "testFile.txt";
+if(isset($_POST['fileWrite']) && !empty($_POST['fileWrite'])) {
+$fileWrite = $_POST['fileWrite'].PHP_EOL;
+}
+if($fileWrite) {
+$fh = fopen($myFile, 'a') or die("can't open file"); //Make sure you have permission
+fwrite($fh, $fileWrite);
+fclose($fh);
+}
+?>
+
 </head>
 
 <body>
-  <div class="wrapper">
-    <div class="header">
-      <div class="logo"> <img src="./foo.gif" alt="Foo Logo">
-      </div>
-    </div>
-    <div class="content page1">
-      <form action="/action_page.php">
-        <ul class="inputList">
-          <li class="">
-            <div class="fuel-form">
-              <label class="form-label" for="date-input">Date</label>
-              <input class="form-input" id="date-input" type="Date" value="">
-            </div>
-          </li>
-          <li class="">
-            <div class="fuel-form">
-              <label class="form-label" for="fuel-input">Fuel #L</label>
-              <input class="form-input" id="fuel-input" type="number" value="43.5" step="0.1">
-            </div>
-          </li>
-          <li class="">
-            <div class="fuel-form">
-              <label class="form-label" for="price-input">Price per L</label>
-              <input class="form-input" id="price-input" type="number" value="1.22" step="0.01">
-            </div>
-          </li>
-          <li class="">
-            <div class="fuel-form">
-              <label class="form-label" for="km-input">KM</label>
-              <input class="form-input" id="km-input" type="number" value="130000" step="1">
-            </div>
-          </li>
-          <li>
-            <div class="submit-buttons">
-              <input class="button-input reverse" type="button" onclick="myFunction()" value="Reset">
-              <input class="button-input" type="button" id="doc-input-default" value="LOG" onclick="myFunction()">
-            </div>
-          </li>
-        </ul>
-      </form>
-    </div>
-    <div class="content page2"> </div>
-    <div class="footer"> Text in Footer </div>
-  </div>
+<form id="some" name="someName" method="post">
+<input type="text" id="some1" class="someClass" value="" name="fileWrite"/>
+<input type="submit" value="submit" class="submitClass"/>
+</form>
 </body>
-
 </html>
