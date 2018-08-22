@@ -1,0 +1,122 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  margin: 0;
+  font-size: 1.3em;
+  color: #222;
+}
+
+
+/* proper coding for sizing boxes https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing */
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+:root {
+  --ftSize: 0.8;
+  /*base footer sizing*/
+}
+
+.wrapper {
+  position: relative;
+  padding-bottom: calc(var(--ftSize, 1)*5rem);
+  /*padding ensure footer doesnt block text. font footer + twice padding footer and +10% */
+  width: 100%;
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0 auto;
+}
+
+.header {
+  margin: 1rem;
+}
+
+.logo {
+  text-align: center;
+  padding: 5px;
+}
+
+.content {}
+
+ul {
+  padding: 1em;
+  list-style: none;
+}
+
+label {
+  padding: 0.6em;
+  display: block;
+}
+
+li {
+  margin: 0.3em;
+}
+
+input {
+  border-radius: 2px;
+  font-size: 100%;
+  width: 100%;
+  margin: 0 auto;
+  border: solid 1px #666;
+  color: #666;
+  display: block;
+  padding: 1em;
+}
+
+input:focus {
+  outline: none;
+}
+
+.form-input:focus {
+  border: solid 1px #111;
+  color: #111;
+  outline: none;
+}
+
+.submit-buttons {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.button-input {
+  background-color: #666;
+  color: #fff;
+  display: inline-block;
+  margin: 3em auto auto auto;
+  text-align: center;
+  text-transform: uppercase;
+  width: 49.5%;
+}
+
+.reverse {
+  color: #999;
+  background-color: #ddd;
+  border: solid 1px #ddd;
+}
+
+.button-input:active {
+  background-color: #AC2622;
+  border: solid 1px #111;
+  color: #fff;
+}
+
+.button-input:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.footer {
+  font-size: calc(var(--ftSize, 1)*1rem);
+  line-height: calc(var(--ftSize, 1)*1rem);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: calc(var(--ftSize, 1)*1rem);
+  background-color: #efefef;
+  text-align: center;
+}
