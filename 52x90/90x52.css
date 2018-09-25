@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+}
+
+.myButton {
+  font-size: 100px;
+  width: 600px;
+  height: 400px;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: var(--testColor);
+}
+
+:root {
+  --border: 1;
+  --marginW: 2;
+  --marginH: 2;
+  --boxsize: 10;
+  --weeks: 52;
+  --years: 90;
+  --sumMarginsW: calc(calc(calc(var(--marginW) * var(--weeks)) * 2) * 1px);
+  --sumMarginsH: calc(calc(calc(var(--marginH) * var(--years)) * 2) * 1px);
+}
+
+.container {
+  margin: auto;
+  width: 80%;
+}
+
+.yearRow {
+  margin: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.weekBox {
+  display: inline-block;
+  margin: calc(var(--marginH) * 1px) calc(var(--marginW) * 1px);
+  background-color: white;
+  border: calc(var(--border) * 1px) solid black;
+  /*width: calc(calc(100% - var(--sumMarginsW)) / var(--weeks));*/
+  width: calc(calc(100% - var(--sumMarginsH)) / var(--years));
+  height: calc(calc(100% - var(--sumMarginsH)) / var(--years));
+}
+
+[type="date"] {
+  background: #fff url(https: //cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/32x32/calendar_2.png)  90% 50% no-repeat;}
+
+    [type="date"]::-webkit-inner-spin-button {
+    display: none;
+  }
+
+  [type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+  }
+
+  /* custom styles */
+  body {
+    padding: 4em;
+    background: #e5e5e5;
+    font-size: 50px;
+  }
+
+  label {
+    display: block;
+  }
+
+  input {
+    font-size: 50px;
+    border: 1px solid #c4c4c4;
+    border-radius: 2px;
+    background-color: #fff;
+    padding: 3px 5px;
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
+    width: 500px;
+  }
