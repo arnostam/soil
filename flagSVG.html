@@ -29,17 +29,26 @@
     }
 
     .titletext {
-      padding: 10px 5px;
-      display: inline-block;
+      padding: 5px 5px;
     }
 
     .target_flag IMG {
       width: 100%;
     }
 
+    .xlabel {
+      color: #DDD;
+      font-size: .8em;
+    }
+
+    .target_name {
+      display: none;
+    }
+
     #locality-dropdown {
       width: 100%;
       font-size: 1em;
+      font-family: 'Ubuntu', sans-serif;
 
     }
   </style>
@@ -61,7 +70,7 @@
         var APIURL = 'https://restcountries.eu/rest/v2/name/' + sel.value + '?fields=alpha2Code;flag;name';
         console.log(APIURL);
         $.getJSON(APIURL, function(datafeed) {
-          $(".target_alpha2").html(`${datafeed[0].alpha2Code}`);
+          $(".target_alpha2").html(`<span>${datafeed[0].alpha2Code}</span> <span class="xlabel"></span>`);
           $(".target_name").html(`${datafeed[0].name}`);
           $(".target_flag").html(`<img src="${datafeed[0].flag}" alt="flag">`);
         });
