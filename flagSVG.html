@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,8 +25,11 @@
 
     .wrapper {
       background-color: white;
-      padding: 20px;
+      padding: 10px;
       margin: auto;
+      object-fit: cover;
+width: calc(100vw - 40px);
+height: calc(100vh - 40px);
     }
 
     .titletext {
@@ -33,9 +37,11 @@
     }
 
     .target_flag IMG {
-      width: 100%;
-      background-color: #fff;
+            background-color: #fff;
       border: solid 1px #eee;
+      object-fit: contain;
+      width: 100%;
+      max-height: 80vh;
     }
 
     .xlabel {
