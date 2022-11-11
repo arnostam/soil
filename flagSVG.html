@@ -75,7 +75,7 @@ height: calc(100vh - 40px);
     $(document).ready(function() {
       $('#locality-dropdown').change(function(e) {
         var sel = document.getElementById('locality-dropdown');
-        var APIURL = 'https://restcountries.eu/rest/v2/name/' + sel.value + '?fields=alpha2Code;flag;name';
+        var APIURL = 'https://restcountries.com/rest/v2/name/' + sel.value + '?fields=alpha2Code;flag;name';
         console.log(APIURL);
         $.getJSON(APIURL, function(datafeed) {
           $(".target_alpha2").html(`<span>${datafeed[0].alpha2Code}</span> <span class="xlabel">ISO 3166-1 alpha-2</span>`);
@@ -90,7 +90,7 @@ height: calc(100vh - 40px);
     let dropdown = $('#locality-dropdown');
     dropdown.append('<option selected="true" disabled>Choose Country</option>');
     dropdown.prop('selectedIndex', 0);
-    const url = 'https://restcountries.eu/rest/v2?fields=alpha2Code;flag;name;alpha2code';
+    const url = 'https://restcountries.com/rest/v2?fields=alpha2Code;flag;name;alpha2code';
     // Populate dropdown with list of provinces
     $.getJSON(url, function(data) {
       $.each(data, function(key, entry) {
