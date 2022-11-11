@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,6 +67,9 @@ height: calc(100vh - 40px);
     <select id="locality-dropdown" class="foo" name="locality"></select>
     <div class="target_alpha2 titletext"></div>
     <div class="target_name titletext"></div>
+    <div class="target_region titletext"></div>
+    <div class="target_call titletext"></div>
+    <div class="target_currencies titletext"></div>
     <div class="target_flag"></div>
   </div>
 
@@ -75,12 +77,18 @@ height: calc(100vh - 40px);
     $(document).ready(function() {
       $('#locality-dropdown').change(function(e) {
         var sel = document.getElementById('locality-dropdown');
-        var APIURL = 'https://restcountries.com/rest/v2/name/' + sel.value + '?fields=alpha2Code;flag;name';
+        var APIURL = 'https://restcountries.com/v2/name/' + sel.value + '?fields=alpha2Code,flags,name,callingCodes,region,currencies';
         console.log(APIURL);
         $.getJSON(APIURL, function(datafeed) {
-          $(".target_alpha2").html(`<span>${datafeed[0].alpha2Code}</span> <span class="xlabel">ISO 3166-1 alpha-2</span>`);
-          $(".target_name").html(`${datafeed[0].name}`);
-          $(".target_flag").html(`<img src="${datafeed[0].flag}" alt="flag">`);
+          
+          $(".target_alpha2").html(`<span>${datafeed[0].alpha2Code}</span> <span class="xlabel"> ISO 3166-1 alpha-2</span>`);
+          $(".target_name").html(`${datafeed[0].name}<span class="xlabel"> Name</span>`);
+          $(".target_region").html(`${datafeed[0].region}<span class="xlabel"> Region</span>`);
+          $(".target_call").html(`<span>+</span><span>${datafeed[0].callingCodes}</span> <span class="xlabel"> Calling Code</span>`);
+          $(".target_currencies").html(`${datafeed[0].currencies[0].name}
+          <span> </span> ${datafeed[0].currencies[0].symbol}
+          <span class="xlabel"> Main Currency Listed</span>`);
+          $(".target_flag").html(`<img src="${datafeed[0].flags.svg}" alt="${datafeed[0].flags.svg}">`);
         });
       });
     });
@@ -90,7 +98,7 @@ height: calc(100vh - 40px);
     let dropdown = $('#locality-dropdown');
     dropdown.append('<option selected="true" disabled>Choose Country</option>');
     dropdown.prop('selectedIndex', 0);
-    const url = 'https://restcountries.com/rest/v2?fields=alpha2Code;flag;name;alpha2code';
+    const url = 'https://restcountries.com/v2/all?fields=alpha2Code,flags,name,alpha2code';
     // Populate dropdown with list of provinces
     $.getJSON(url, function(data) {
       $.each(data, function(key, entry) {
